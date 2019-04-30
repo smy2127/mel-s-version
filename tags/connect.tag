@@ -102,6 +102,7 @@
           question: this.question,
           uid: userKey,
           timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+          id:questionKey,
         };
         this.questionList.push(questionItem);
         this.update();
@@ -110,12 +111,14 @@
           uid: userKey,
           question: this.question,
           timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+          id: questionKey,
         });
 
-        userQuestions.doc().set({
+        userQuestions.doc(questionKey).set({
           uid: userKey,
           question: this.question,
           timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+          id: questionKey,
         });
         this.question = this.refs.textarea.value = "";
       }

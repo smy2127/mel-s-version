@@ -1,3 +1,4 @@
+
 # MSTU 5013 Final Project: VEGuality  
 
 ### By: Melissa Yeo, Brenda Khor, Dongxin Li
@@ -42,3 +43,6 @@
 * Github Repository:
 * YouTube Reflection Video:
 * Currently I'm using mp4 file from server
+=======
+# mel-s-version
+
