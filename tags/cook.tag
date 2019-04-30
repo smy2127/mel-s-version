@@ -1,5 +1,16 @@
 <cook>
-  <div class="cook">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>TITLE</title>
+
+    <link rel="stylesheet" href="/css/styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  </head>
+
+  <body class="no-margin">
     <nav class="row centered">
       <div class="logo">
         <a href="/"><img style="margin-top:20px;width:30%;" src="/assets/logo.png"/></a>
@@ -20,11 +31,6 @@
       <div class="cook bg row centered">
         <div class="overlay column centered">
           <h1>Mouthwatering meals are just a click away</h1>
-          <div class="play button">
-            <i class="material-icons">
-              play_arrow
-            </i>
-          </div>
         </div>
       </div>
     </div>
@@ -37,7 +43,7 @@
     <div class="section column centered">
       <h1>Breakfast</h1>
       <div class="carousel row centered" id="carousel-switch-1">
-        <div class="left arrow row centered" onclick={changeSlide1Prev}>
+        <div class="left arrow row centered" onclick="changeSlide1(-1)">
           <i class="material-icons">
             keyboard_arrow_left
           </i>
@@ -45,8 +51,8 @@
         <div class="content">
           <img src="/assets/cb1.jpg" height="250px" width="280px">
           <h3>
-            <i>Bacon</i>
-            and Avocado Breakfast Sandwich</h3>
+            <a href="https://www.happy-mothering.com/08/recipes/vegan-bacon-breakfast-sandwich/" target="_blank"><i>Bacon</i>
+            and Avocado Breakfast Sandwich</a></h3>
           <p>What's better than a whole grain breakfast sandwich packed with savory flavors?!</p>
         </div>
         <div class="content">
@@ -59,7 +65,7 @@
           <h3>Whole-grain waffles and <i>sausage</i></h3>
           <p>Cook with a lot of love in a couple of minutes!</p>
         </div>
-        <div class="right arrow row centered" onclick={changeSlide1Next}>
+        <div class="right arrow row centered" onclick="changeSlide1(1)">
           <i class="material-icons">
             keyboard_arrow_right
           </i>
@@ -70,14 +76,14 @@
     <div class="section column centered">
       <h1>Lunch</h1>
       <div class="carousel row centered" id="carousel-switch-2">
-        <div class="left arrow row centered" onclick={changeSlide1Prev}>
+        <div class="left arrow row centered" onclick="changeSlide1(-1)">
           <i class="material-icons">
             keyboard_arrow_left
           </i>
         </div>
         <div class="content">
-          <img src="/assets/cl1.jpg" height="250px" width="280px">
-          <h3>Tomato and Basil Soup</h3>
+          <img src="/assets/cl1.jpg" height="280px" width="250px">
+          <h3><a href="https://lovingitvegan.com/vegan-tomato-basil-soup/" target="_blank">Tomato and Basil Soup</a></h3>
           <p>YUM! A protein-packed meal full of veggies that will full you up.</p>
         </div>
         <div class="content">
@@ -90,7 +96,7 @@
           <h3><i>Turk'y</i> Sandwich with Sprouts and Avocado</h3>
           <p>Delicious sandwhich in a matter of minutes!</p>
         </div>
-        <div class="right arrow row centered" onclick={changeSlide1Next}>
+        <div class="right arrow row centered" onclick="changeSlide1(1)">
           <i class="material-icons">
             keyboard_arrow_right
           </i>
@@ -101,14 +107,14 @@
     <div class="section column centered">
       <h1>Dinner</h1>
       <div class="carousel row centered" id="carousel-switch-3">
-        <div class="left arrow row centered" onclick={changeSlide1Prev}>
+        <div class="left arrow row centered" onclick="changeSlide1(-1)">
           <i class="material-icons">
             keyboard_arrow_left
           </i>
         </div>
         <div class="content">
           <img src="/assets/cd1.jpg" height="250px" width="280px">
-          <h3>Stuffed Baked Potato and Salad</h3>
+          <h3><a href="https://www.yummly.com/recipe/Vegan-Stuffed-Sweet-Potato-1579325" target="_blank">Stuffed Baked Potato and Salad</a></h3>
           <p>This potato and salad will make you satisfied without feeling stuffed.</p>
         </div>
         <div class="content">
@@ -121,7 +127,7 @@
           <h3>Avocado burger with Sweet Potato Fries</h3>
           <p>No need for an introduction! Stacked high with fresh and nourishing ingredients.</p>
         </div>
-        <div class="right arrow row centered" onclick={changeSlide1Next}>
+        <div class="right arrow row centered" onclick="changeSlide1(1)">
           <i class="material-icons">
             keyboard_arrow_right
           </i>
@@ -140,9 +146,12 @@
         <img src="/assets/grocerylist.jpg" height="300px" width="500px">
       </div>
     </div>
-  </div>
-  <style>
-  </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/switch-carousel-1.js"></script>
+    <script src="js/switch-carousel-2.js"></script>
+  </body>
+
   <script>
     this.user = "";
     //login
@@ -168,7 +177,8 @@
       this.update();
     });
 
-    //carousel
+
+//carousel
     var currentSlide1 = 0;
     var slides1 = [
         {
@@ -209,52 +219,7 @@
         }
     ];
 
-    this.on('mount', () => {
-        this.slide1 = 0;
-        this.slide2 = 0;
-        this.slide3 = 0;
-        this.firstSlides = [
-          {
-              left: {
-                  image: "https://via.placeholder.com/320x250",
-                  title: "Convenience in a Can 1",
-                  content: "Pack your cupboard with black beans, lentils, vegetarian chili, and savory soups for satisfying plant-based protein."
-              },
-              right: {
-                  image: "https://via.placeholder.com/320x250",
-                  title: "Convenience in a Can 2",
-                  content: "Pack your cupboard with black beans, lentils, vegetarian chili, and savory soups for satisfying plant-based protein."
-              }
-          },
-          {
-              left: {
-                  image: "https://via.placeholder.com/320x250",
-                  title: "Convenience in a Can 3",
-                  content: "Pack your cupboard with black beans, lentils, vegetarian chili, and savory soups for satisfying plant-based protein."
-              },
-              right: {
-                  image: "https://via.placeholder.com/320x250",
-                  title: "Convenience in a Can 4",
-                  content: "Pack your cupboard with black beans, lentils, vegetarian chili, and savory soups for satisfying plant-based protein."
-              }
-          },
-          {
-              left: {
-                  image: "https://via.placeholder.com/320x250",
-                  title: "Convenience in a Can 5",
-                  content: "Pack your cupboard with black beans, lentils, vegetarian chili, and savory soups for satisfying plant-based protein."
-              },
-              right: {
-                  image: "https://via.placeholder.com/320x250",
-                  title: "Convenience in a Can 6",
-                  content: "Pack your cupboard with black beans, lentils, vegetarian chili, and savory soups for satisfying plant-based protein."
-              }
-          }
-        ];
-        this.update();
-    })
-
-    this.initialiseCarousel1 = function() {
+    function initialiseCarousel1() {
         // for carousel 1
         var carousel = document.getElementById("carousel-switch-1");
         if (carousel != undefined) {
@@ -269,43 +234,7 @@
         }
     }
 
-    this.changeSlide1Prev = (e) => {
-        if (this.slide1 <= 0) {
-            this.slide1 = this.firstSlides.length - 1;
-        } else {
-            this.slide1--;
-        }
-        this.update();
-
-        this.rolling(this.firstSlides, this.slide1);
-    }
-
-    this.rolling = (source, index) => {
-      var carousel = document.getElementById("carousel-switch-1");
-      var leftContent = carousel.getElementsByClassName("content")[0];
-      var rightContent = carousel.getElementsByClassName("content")[1];
-      if (source[index].left != undefined) {
-          leftContent.children[0].setAttribute("src", source[index].left.image);
-          leftContent.children[1].innerText = source[index].left.title;
-          leftContent.children[2].innerText = source[index].left.content;
-      } else {
-          leftContent.children[0].setAttribute("src", "");
-          leftContent.children[1].innerText = "";
-          leftContent.children[2].innerText = "";
-      }
-
-      if (source[index].right != undefined) {
-          rightContent.children[0].setAttribute("src", source[index].right.image);
-          rightContent.children[1].innerText = source[index].right.title;
-          rightContent.children[2].innerText = source[index].right.content;
-      } else {
-          rightContent.children[0].setAttribute("src", "");
-          rightContent.children[1].innerText = "";
-          rightContent.children[2].innerText = "";
-      }
-    }
-
-    this.changeSlide1 = (increment) => {
+    function changeSlide1(increment) {
         if (increment > 0) {
             if (currentSlide1 >= slides1.length - 1) {
                 currentSlide1 = 0;
@@ -343,7 +272,7 @@
         }
     }
 
-    this.initialiseCarousel1();
+    initialiseCarousel1();
 
     //create grocerylist button
     // groList(e) {
@@ -356,4 +285,5 @@
 
 
   </script>
+
 </cook>
